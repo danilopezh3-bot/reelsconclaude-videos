@@ -11,7 +11,7 @@ const FPS = 30;
 export const P_DUR = 22.0;
 export const P_FRAMES = Math.round(P_DUR * FPS);
 
-const C = {blue: '#2A44F5', deep: '#1A2BB8', yellow: '#FFD84D', ink: '#12141B', white: '#FFFFFF', light: '#F2F4F8'};
+const C = {blue: '#2A44F5', deep: '#0A0C14', yellow: '#FFD84D', ink: '#12141B', white: '#FFFFFF', light: '#F2F4F8'};
 const FONT = 'Bricolage';
 type W = {w: string; s: number; e: number};
 const words = data.words as W[];
@@ -21,9 +21,9 @@ const norm = (s: string) => s.toLowerCase().replace(/[^\wáéíóúñü]/g, '');
 const at = (w: string, nth = 0) => words.filter((x) => norm(x.w) === w)[nth];
 
 const T = {
-  cnt: [0.3, at('vistas').e], sin: at('sin').s, editar: at('editar').s, nada: at('nada').s, hookEnd: 5.35,
-  paso: at('paso').s, typeS: 6.0, logo1: at('claude').s, p1End: 8.25,
-  list: [at('investiga').s, at('comprueba').s, at('escribe').s], listEnd: 12.15,
+  cnt: [0.15, at('tres').s], sin: at('sin').s, editar: at('editar').s, nada: at('nada').s, hookEnd: 5.35,
+  paso: 5.42, typeS: 5.62, logo1: at('claude').s, p1End: 8.25,
+  list: [8.42, at('comprueba').s, at('escribe').s], listEnd: 12.15,
   eleven: at('elevenlabs').s, elEnd: 14.08,
   claude3: at('claude', 2).s, cards: [at('anima').s, at('cada', 1).s, at('escena').s], animEnd: 18.35,
   tu: at('tú').s, link: at('link').s,
@@ -74,19 +74,43 @@ const ElevenMark: React.FC<{size: number}> = ({size}) => (
 // ---------- fondo ----------
 const Backdrop: React.FC = () => {
   const frame = useCurrentFrame();
-  const drift = (frame * 0.6) % 48;
+  const drift = (frame * 1.4) % 48;
+  const e = rms[frame] ?? 0;
+  const gx = 50 + Math.sin(frame / 40) * 18, gy = 34 + Math.cos(frame / 55) * 10;
   return (
-    <AbsoluteFill style={{background: `radial-gradient(1100px 900px at 50% 30%, ${C.blue}, ${C.deep})`}}>
-      <AbsoluteFill style={{backgroundImage: 'radial-gradient(rgba(255,255,255,.16) 2px, transparent 2.6px)', backgroundSize: '48px 48px',
+    <AbsoluteFill style={{background: C.deep}}>
+      <AbsoluteFill style={{background: `radial-gradient(${900 + e * 260}px ${780 + e * 220}px at ${gx}% ${gy}%, rgba(42,68,245,${0.42 + e * 0.25}), transparent 70%)`}} />
+      <AbsoluteFill style={{background: `radial-gradient(620px 520px at ${100 - gx}% 88%, rgba(255,216,77,${0.10 + e * 0.08}), transparent 70%)`}} />
+      <AbsoluteFill style={{backgroundImage: 'radial-gradient(rgba(255,255,255,.09) 2px, transparent 2.6px)', backgroundSize: '48px 48px',
         backgroundPosition: `0 ${drift}px`}} />
+      <AbsoluteFill style={{background: 'radial-gradient(1300px 1700px at 50% 45%, transparent 55%, rgba(0,0,0,.55))'}} />
     </AbsoluteFill>
   );
+};
+
+// entrada con zoom y desenfoque, salida rápida, y un leve empuje de cámara continuo
+const Scene: React.FC<{s: number; e: number; children: React.ReactNode; dir?: number}> = ({s, e, children, dir = 1}) => {
+  const frame = useCurrentFrame(); const {fps} = useVideoConfig();
+  const pin = spring({frame: frame - f(s), fps, config: {damping: 16, stiffness: 210, mass: 0.6}});
+  const pout = interpolate(frame, [f(e) - 6, f(e)], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.in(Easing.cubic)});
+  const push = interpolate(frame, [f(s), f(e)], [1, 1.06], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const scale = (1.22 - 0.22 * pin) * push * (1 - 0.12 * pout);
+  return (
+    <AbsoluteFill style={{transform: `scale(${scale}) translateX(${(1 - pin) * 60 * dir - pout * 140 * dir}px) rotate(${(1 - pin) * 2.5 * dir}deg)`,
+      filter: `blur(${(1 - pin) * 14 + pout * 16}px)`, opacity: Math.min(1, pin * 2) * (1 - pout)}}>{children}</AbsoluteFill>
+  );
+};
+// destello y sacudida en cada cambio de escena
+const Flash: React.FC<{at: number[]}> = ({at}) => {
+  const frame = useCurrentFrame();
+  const o = Math.max(0, ...at.map((t) => interpolate(frame, [f(t), f(t) + 5], [0.22, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}) * (frame >= f(t) ? 1 : 0)));
+  return <AbsoluteFill style={{background: '#fff', opacity: o, mixBlendMode: 'overlay'}} />;
 };
 
 // ---------- 0: gancho ----------
 const Hook: React.FC = () => {
   const frame = useCurrentFrame(); const {fps} = useVideoConfig();
-  const out = useOut(T.hookEnd, 0.35);
+  const out = 1;
   const n = interpolate(frame, [f(T.cnt[0]), f(T.cnt[1])], [0, 3000000], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)});
   const done = frame >= f(T.cnt[1]);
   const bump = done ? spring({frame: frame - f(T.cnt[1]), fps, config: {damping: 8}}) : 0;
@@ -127,7 +151,7 @@ const Hook: React.FC = () => {
 // ---------- 1: le digo a Claude el tema ----------
 const Paso1: React.FC = () => {
   const frame = useCurrentFrame();
-  const out = useOut(T.p1End, 0.3);
+  const out = 1;
   const pPaso = usePop(T.paso); const pBox = usePop(T.typeS - 0.15, 13); const pLogo = usePop(T.logo1, 9);
   const text = 'Hazme un vídeo sobre por qué el mar es salado';
   const n = Math.max(0, Math.min(text.length, Math.floor((frame - f(T.typeS)) / (0.04 * FPS)) + 1));
@@ -152,29 +176,29 @@ const Paso1: React.FC = () => {
 // ---------- 2: investiga, comprueba, escribe ----------
 const Lista: React.FC = () => {
   const frame = useCurrentFrame(); const {fps} = useVideoConfig();
-  const out = useOut(T.listEnd, 0.3); const pIn = usePop(T.p1End - 0.05, 13);
+  const out = 1; const pIn = usePop(T.p1End, 13);
   const labels = ['INVESTIGA', 'COMPRUEBA CADA DATO', 'ESCRIBE EL GUION'];
   const lines = [0.92, 0.78, 0.86, 0.6];
   return (
     <AbsoluteFill style={{opacity: out}}>
-      <Center y={240}><div style={{transform: `scale(${pIn})`}}><ClaudeMark size={80} /></div></Center>
+      <Center y={210}><div style={{transform: `scale(${pIn})`}}><ClaudeMark size={84} /></div></Center>
       {labels.map((l, i) => {
         const p = spring({frame: frame - f(T.list[i]), fps, config: {damping: 12, stiffness: 170}});
         const tick = spring({frame: frame - f(T.list[i]) - 6, fps, config: {damping: 7}});
         return (
-          <Center key={l} y={460 + i * 140}>
-            <div style={{transform: `translateX(${(1 - p) * -900}px)`, opacity: p > 0.01 ? 1 : 0, display: 'flex', alignItems: 'center', gap: 20, width: 820,
-              background: C.white, borderRadius: 28, padding: '20px 30px 20px 20px', boxShadow: '0 18px 40px -16px rgba(5,10,40,.5)'}}>
+          <Center key={l} y={430 + i * 190}>
+            <div style={{transform: `translateX(${(1 - p) * -900}px)`, opacity: p > 0.01 ? 1 : 0, display: 'flex', alignItems: 'center', gap: 24, width: 920,
+              background: C.white, borderRadius: 30, padding: '24px 34px 24px 24px', boxShadow: '0 18px 40px -16px rgba(5,10,40,.5)'}}>
               <div style={{width: 70, height: 70, borderRadius: 20, background: C.yellow, display: 'grid', placeItems: 'center',
                 fontFamily: FONT, fontSize: 44, color: C.ink, transform: `scale(${tick})`}}>✓</div>
-              <div style={{fontFamily: FONT, fontSize: 56, color: C.ink}}>{l}</div>
+              <div style={{fontFamily: FONT, fontSize: 54, color: C.ink, whiteSpace: 'nowrap'}}>{l}</div>
             </div>
           </Center>
         );
       })}
       {/* el guion se escribe */}
-      <Center y={1080}>
-        <div style={{width: 820, background: 'rgba(255,255,255,.12)', border: '3px solid rgba(255,255,255,.35)', borderRadius: 28, padding: '28px 32px',
+      <Center y={1170}>
+        <div style={{width: 920, background: 'rgba(255,255,255,.12)', border: '3px solid rgba(255,255,255,.35)', borderRadius: 28, padding: '28px 32px',
           display: 'grid', gap: 18, opacity: interpolate(frame, [f(T.list[2]) - 3, f(T.list[2]) + 6], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}}>
           <div style={{fontFamily: FONT, fontSize: 34, color: C.yellow}}>guion.txt</div>
           {lines.map((w, k) => (
@@ -190,7 +214,7 @@ const Lista: React.FC = () => {
 // ---------- 3: ElevenLabs pone la voz ----------
 const Voz: React.FC = () => {
   const frame = useCurrentFrame();
-  const out = useOut(T.elEnd, 0.25); const p = usePop(T.eleven, 9);
+  const out = 1; const p = usePop(T.eleven, 9);
   const bars = 27;
   return (
     <AbsoluteFill style={{opacity: out}}>
@@ -213,7 +237,7 @@ const Voz: React.FC = () => {
 // ---------- 4: Claude anima cada escena (trozos reales) ----------
 const Anima: React.FC = () => {
   const frame = useCurrentFrame(); const {fps} = useVideoConfig();
-  const out = useOut(T.animEnd, 0.25); const pLogo = usePop(T.claude3, 10);
+  const out = 1; const pLogo = usePop(T.claude3, 10);
   const cards = [{src: 'reel1.mp4', from: 420, x: 225, r: -7}, {src: 'reel3.mp4', from: 480, x: 855, r: 7}, {src: 'reel2.mp4', from: 150, x: 540, r: 0}];
   return (
     <AbsoluteFill style={{opacity: out}}>
@@ -292,17 +316,23 @@ export const Proceso: React.FC = () => {
     const ff = new FontFace(FONT, `url(${staticFile('Bricolage-800.ttf')})`, {weight: '800'});
     ff.load().then((x) => { document.fonts.add(x); continueRender(handle); });
   }, [handle]);
+  const hits = [T.cnt[1], T.nada, T.logo1, T.eleven, T.link];
+  const k = Math.max(0, ...hits.map((t) => (frame >= f(t) && frame < f(t) + 9 ? (9 - (frame - f(t))) / 9 : 0)));
+  const shakeX = Math.sin(frame * 2.7) * 14 * k, shakeY = Math.cos(frame * 3.1) * 10 * k;
   const black = interpolate(frame, [P_FRAMES - 21, P_FRAMES - 1], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const seq = (s: number, e: number, el: React.ReactNode) => (frame >= f(s) - 1 && frame <= f(e) + 1 ? el : null);
   return (
     <AbsoluteFill style={{background: C.deep, fontWeight: 800}}>
       <Backdrop />
-      {seq(0, T.hookEnd, <Hook />)}
-      {seq(T.paso - 0.1, T.p1End, <Paso1 />)}
-      {seq(T.p1End - 0.1, T.listEnd, <Lista />)}
-      {seq(T.listEnd - 0.1, T.elEnd, <Voz />)}
-      {seq(T.elEnd - 0.05, T.animEnd, <Anima />)}
-      {seq(T.animEnd - 0.1, P_DUR, <Final />)}
+      <AbsoluteFill style={{transform: `translate(${shakeX}px, ${shakeY}px)`}}>
+        {seq(0, T.hookEnd, <Scene s={0} e={T.hookEnd}><Hook /></Scene>)}
+        {seq(T.hookEnd, T.p1End, <Scene s={T.hookEnd} e={T.p1End} dir={-1}><Paso1 /></Scene>)}
+        {seq(T.p1End, T.listEnd, <Scene s={T.p1End} e={T.listEnd}><Lista /></Scene>)}
+        {seq(T.listEnd, T.elEnd, <Scene s={T.listEnd} e={T.elEnd} dir={-1}><Voz /></Scene>)}
+        {seq(T.elEnd, T.animEnd, <Scene s={T.elEnd} e={T.animEnd}><Anima /></Scene>)}
+        {seq(T.animEnd, P_DUR, <Scene s={T.animEnd} e={P_DUR + 1} dir={-1}><Final /></Scene>)}
+      </AbsoluteFill>
+      <Flash at={[T.hookEnd, T.p1End, T.listEnd, T.elEnd, T.animEnd, T.nada, T.link]} />
       <Captions />
       <AbsoluteFill style={{background: '#000', opacity: black}} />
     </AbsoluteFill>

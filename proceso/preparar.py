@@ -34,12 +34,12 @@ def snd(k):
 W = {x["text"].strip(".,:").lower() + str(i): x for i, x in enumerate(words)}
 def at(word, nth=0): return [x for x in words if x["text"].strip(".,:").lower() == word][nth]["start"]
 sfx = [(0, "whoosh")]
-sfx += [(0.3 + i * 0.12, "tick") for i in range(29)]                     # contador
-sfx += [(at("sin"), "pop"), (at("nada"), "boom")]
-sfx += [(5.45, "whoosh"), (at("paso"), "pop")]
-sfx += [(5.95 + i * 0.085, "tick") for i in range(21)]                    # teclas
+sfx += [(0.15 + i * 0.07, "tick") for i in range(28)]                     # contador
+sfx += [(at("tres"), "ding"), (at("sin"), "pop"), (at("nada"), "boom")]
+sfx += [(5.3, "whoosh"), (5.42, "pop")]
+sfx += [(5.62 + i * 0.085, "tick") for i in range(21)]                    # teclas
 sfx += [(at("claude"), "pop"), (8.3, "whoosh")]
-sfx += [(at("investiga"), "pop"), (at("comprueba"), "pop"), (at("escribe"), "ding")]
+sfx += [(8.42, "pop"), (at("comprueba"), "pop"), (at("escribe"), "ding")]
 sfx += [(12.15, "whoosh"), (at("elevenlabs"), "pop")]
 sfx += [(14.1, "whoosh"), (at("claude", 2), "pop"), (at("anima"), "pop"), (at("cada", 1), "pop"), (at("escena"), "pop")]
 sfx += [(18.35, "whoosh"), (at("tú"), "pop"), (at("link") - 0.05, "whoosh"), (at("link"), "ding")]
