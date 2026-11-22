@@ -294,14 +294,14 @@ const Captions: React.FC = () => {
   const p = spring({frame: frame - f(g.s), fps, config: {damping: 14, stiffness: 220}});
   const clean = (w: string) => w.replace(/[.,:]/g, '').toUpperCase();
   const chars = g.ws.reduce((a, w) => a + clean(w.w).length, 0) + g.ws.length - 1;
-  const fs = Math.min(86, Math.floor(940 / (chars * 0.7)));
+  const fs = Math.min(80, Math.floor(940 / (chars * 0.78)));
   return (
     <Center y={1560}>
-      <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', columnGap: 26, maxWidth: 980, transform: `translateY(${(1 - p) * 24}px) scale(${0.9 + 0.1 * p})`, opacity: p}}>
+      <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', columnGap: 40, maxWidth: 980, transform: `translateY(${(1 - p) * 24}px) scale(${0.9 + 0.1 * p})`, opacity: p}}>
         {g.ws.map((w, k) => {
           const on = t >= w.s && (k + 1 < g.ws.length ? t < g.ws[k + 1].s : true);
           const wp = on ? spring({frame: frame - f(w.s), fps, config: {damping: 10, stiffness: 260}}) : 0;
-          return <span key={k} style={{fontFamily: FONT, fontSize: fs, color: on ? C.yellow : C.white, ...stroke(8), display: 'inline-block', transform: `scale(${1 + 0.1 * wp})`}}>{clean(w.w)}</span>;
+          return <span key={k} style={{fontFamily: 'Montserrat', fontSize: fs, color: on ? C.yellow : C.white, ...stroke(8), display: 'inline-block', transform: `scale(${1 + 0.1 * wp})`}}>{clean(w.w)}</span>;
         })}
       </div>
     </Center>
@@ -313,8 +313,9 @@ export const Proceso: React.FC = () => {
   const frame = useCurrentFrame();
   const [handle] = useState(() => delayRender('fuente'));
   useEffect(() => {
-    const ff = new FontFace(FONT, `url(${staticFile('Bricolage-800.ttf')})`, {weight: '800'});
-    ff.load().then((x) => { document.fonts.add(x); continueRender(handle); });
+    const fonts = [new FontFace(FONT, `url(${staticFile('Bricolage-800.ttf')})`, {weight: '800'}),
+      new FontFace('Montserrat', `url(${staticFile('Montserrat-800.woff2')})`, {weight: '800'})];
+    Promise.all(fonts.map((x) => x.load())).then((xs) => { xs.forEach((x) => document.fonts.add(x)); continueRender(handle); });
   }, [handle]);
   const hits = [T.cnt[1], T.nada, T.logo1, T.eleven, T.link];
   const k = Math.max(0, ...hits.map((t) => (frame >= f(t) && frame < f(t) + 9 ? (9 - (frame - f(t))) / 9 : 0)));
