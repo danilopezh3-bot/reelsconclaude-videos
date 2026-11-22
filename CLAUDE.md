@@ -8,7 +8,7 @@ Contexto para continuar el trabajo en una sesión nueva. Responde siempre en **e
 - Web: **https://reelsconclaude.com** → repo `danilopezh3-bot/reelsconclaude` (rama `main`, Cloudflare Pages publica solo cada push en 1–2 min). **Todo lo que se sube a ese repo es público.** Por eso los vídeos de trabajo van en este repo privado (`reelsconclaude-videos`).
 - Pago: Stripe Payment Link `https://buy.stripe.com/fZueV718q2pbeUP2G92ZO00` (modo real). La descarga para compradores (Google Drive) va en la página de confirmación de Stripe, **nunca en la web**.
 - Contacto: Telegram `https://t.me/danilopezh3`, Discord `https://discord.gg/E2H3KbFjFn`.
-- Resultados reales para usar en textos: reels con **1,4 M**, **768 K** y **271 K** reproducciones (**+2,4 M** en total). No inventar cifras. La frase "2 millones en 7 días" del vídeo promo está sin confirmar: no repetirla en textos nuevos sin preguntar.
+- Resultados reales para usar en textos: reels con **1,4 M**, **768 K** y **271 K** reproducciones (**+3 M** en total desde nov. 2026; antes +2,4 M). No inventar cifras. La frase "2 millones en 7 días" del vídeo promo está sin confirmar: no repetirla en textos nuevos sin preguntar.
 
 ## Marca
 - Colores: azul `#2A44F5`, amarillo `#FFD84D`, tinta `#12141B`, fondo claro `#F2F4F8`.
