@@ -120,8 +120,7 @@ const Backdrop: React.FC<{cam: number}> = ({cam}) => {
 // cada clave: [tiempo, centro x, centro y, ancho, alto, radio, color]
 type K = [number, number, number, number, number, number, string];
 const MORPH: K[] = [
-  [0, 540, 900, 920, 430, 28, C.panel],          // línea de tiempo de un editor
-  [T.yo, 540, 520, 820, 24, 12, C.yellow],       // se aplasta en una raya que tacha "EDITAR VÍDEOS?"
+  [0, 540, 1010, 920, 430, 28, C.panel],         // línea de tiempo de un editor
   [2.84, 540, 1240, 860, 230, 115, C.yellow],    // se convierte en el contador de vistas
   [T.paso, 540, 930, 940, 250, 40, C.white],     // la caja donde se escribe el tema
   [T.claude2, 540, 900, 940, 860, 40, C.white],  // el guion
@@ -265,11 +264,11 @@ const Cta: React.FC<{t: number}> = ({t}) => (
 const Morph: React.FC = () => {
   const frame = useCurrentFrame(); const t = frame / FPS;
   const m = morphAt(t);
-  const stages = [<Timeline t={t} />, null, <Counter t={t} />, <Typing t={t} />, <Script t={t} />, <Wave frame={frame} />, <Screen t={t} />, <Cta t={t} />];
-  const shadow = m.i === 1 ? '0 6px 0 rgba(0,0,0,.35)' : '0 40px 80px -30px rgba(18,20,60,.35)';
+  const stages = [<Timeline t={t} />, <Counter t={t} />, <Typing t={t} />, <Script t={t} />, <Wave frame={frame} />, <Screen t={t} />, <Cta t={t} />];
+  const shadow = '0 40px 80px -30px rgba(18,20,60,.35)';
   return (
     <div style={{position: 'absolute', left: m.cx - m.w / 2, top: m.cy - m.h / 2, width: m.w, height: m.h, borderRadius: m.r, background: m.color,
-      overflow: 'hidden', boxShadow: shadow, transform: m.i === 1 ? 'rotate(-3deg)' : undefined}}>
+      overflow: 'hidden', boxShadow: shadow}}>
       {stages.map((el, i) => (el ? <div key={i} style={{position: 'absolute', inset: 0, opacity: stageVis(t, i)}}>{el}</div> : null))}
     </div>
   );
