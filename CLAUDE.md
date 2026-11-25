@@ -5,7 +5,7 @@ Contexto para continuar el trabajo en una sesión nueva. Responde siempre en **e
 ## Quién y qué
 - Creador de reels animados sin cara (cuenta de Instagram **@stickman_report**). Vende una skill de Claude que hace reels explicativos animados.
 - Producto: **"Reels con Claude"**, USD **19.00** pago único. Incluye la skill, ayuda para empezar con Claude Code y una asesoría privada 1 a 1.
-- Web: **https://reelsconclaude.com** → repo `danilopezh3-bot/reelsconclaude` (rama `main`, Cloudflare Pages publica solo cada push en 1–2 min). **Todo lo que se sube a ese repo es público.** Por eso los vídeos de trabajo van en este repo privado (`reelsconclaude-videos`).
+- Web: **https://reelsconclaude.com** → repo `danilopezh3-bot/reelsconclaude` (rama `main`, Cloudflare Pages publica solo cada push en 1–2 min). El repo es **privado** desde nov. 2026, pero lo que Cloudflare publica en la web lo ve cualquiera: nada privado en sus archivos (ni la descarga de Drive). Los vídeos de trabajo van en este repo (`reelsconclaude-videos`).
 - Pago: Stripe Payment Link `https://buy.stripe.com/fZueV718q2pbeUP2G92ZO00` (modo real). La descarga para compradores (Google Drive) va en la página de confirmación de Stripe, **nunca en la web**.
 - Contacto: Telegram `https://t.me/danilopezh3`, Discord `https://discord.gg/E2H3KbFjFn`.
 - Resultados reales para usar en textos: reels con **1,4 M**, **768 K** y **271 K** reproducciones y **+3 M** en total sumando todos sus vídeos (nov. 2026). Los +3 M no son la suma de esos tres reels: decir "con reels hechos con esta skill", nunca "en estos tres reels". No inventar cifras. La frase "2 millones en 7 días" del vídeo promo está sin confirmar: no repetirla en textos nuevos sin preguntar.
@@ -37,5 +37,5 @@ Carpeta `remotion/` (Remotion 4, React 18). Instalar con `cd remotion && npm ins
 ## Notas del entorno
 - Para vídeos grandes: el usuario los sube a Google Drive (compartido con "cualquiera con el enlace"); `drive.usercontent.google.com/download?id=<ID>&export=download&confirm=t` está permitido en la red.
 - ElevenLabs está conectado pero no acepta archivos del chat ni enlaces de Drive para transcribir.
-- No subir audio/vídeo de trabajo al repo de la web (es público).
+- No subir audio/vídeo de trabajo al repo de la web (se publica en la web).
 - Commits con `-c user.name="danilopezh3-bot" -c user.email="danilopezh3-bot@users.noreply.github.com"`.
