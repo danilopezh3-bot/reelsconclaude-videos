@@ -48,3 +48,26 @@ Carpeta `remotion/` (Remotion 4, React 18). Instalar con `cd remotion && npm ins
 
 ## Web
 - Rediseño estilo telediario (nov. 2026). Notas de diseño en `web/` (PRODUCT.md, DESIGN.md, design.json). En el repo de la web esos archivos no se suben (se publicarían).
+
+## Lo aprendido haciendo los reels (aplicar en los siguientes)
+**Estilo que le gusta al usuario (reel 2):**
+- Textos que salen de una máscara (suben desde detrás de un borde), nunca aparecer de golpe.
+- Movimientos encadenados: la escena nueva entra por abajo y empuja a la anterior hacia arriba (escenas apiladas en vertical y una cámara que se desplaza).
+- Cámara que sigue lo importante: zoom suave al contador, a la caja donde se escribe, a cada punto del guion, a los subtítulos. Claves de cámara con tiempo y valor e interpolación suave.
+- Transiciones por transformación: una misma forma cambia de tamaño, color y esquinas de escena en escena (editor → contador → caja de texto → guion → onda → pantalla del reel → recuadro final). Su contenido aparece cuando la forma termina de llegar.
+- Todo sincronizado con la voz: cada cosa entra en la palabra exacta (tiempos de Scribe).
+- Montserrat ExtraBold y fondo claro (#F2F4F8 con brillo azul suave y un toque amarillo).
+- Llamada a la acción que le gustó: "¿Quieres hacer los tuyos? Te enseño paso a paso. Link en mi bio." (mejor que solo "Link en mi bio").
+- Arranque que le gustó: hablar al principiante ("¿No sabes editar vídeos? Yo tampoco…").
+
+**Errores a no repetir:**
+- Nada de rayas o tachones decorativos encima de los textos: pidió quitar la raya amarilla que tachaba "EDITAR VÍDEOS?".
+- Con fondo claro: el amarillo no se lee como texto; usar tinta #12141B y azul #2A44F5 para destacar. Los subtítulos blancos con borde se ven huecos: mejor texto oscuro y la palabra activa en un recuadro azul con letra blanca.
+- Montserrat es más ancha que Bricolage: bajar los tamaños un 15–20 % y comprobar que nada se sale de los 1080 px.
+- Antes de renderizar todo, sacar fotogramas sueltos (`npx remotion still … --frame=N --scale=0.25`) y juntarlos en una tira con ffmpeg `hstack` para revisar de un vistazo.
+
+**Flujo de trabajo:**
+- Proponer el guion y 2–3 arranques/cierres antes de generar la voz (gasta créditos); no generar dos veces para reintentar.
+- La voz anterior no queda apuntada en el flujo de ElevenLabs: si se pierde, comparar el audio con las muestras de las voces de la cuenta (esa fue la forma de encontrar a Marto). Por eso ahora está apuntada arriba.
+- ElevenLabs genera 2 tomas: usar la 1 y ofrecer la 2.
+- Las cifras: "más de tres millones de vistas" es el total de todos sus vídeos; no inventar otras.
