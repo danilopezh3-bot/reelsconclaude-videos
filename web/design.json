@@ -1,0 +1,523 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-25T05:17:01+00:00",
+  "title": "Design System: Reels con Claude",
+  "extensions": {
+    "colorMeta": {
+      "blue": {
+        "role": "primary",
+        "displayName": "Azul Rótulo",
+        "canonical": "oklch(50.4% 0.260 268)",
+        "tonalRamp": [
+          "#02052A",
+          "#0B007B",
+          "#161EB0",
+          "#263DE8",
+          "#466EFF",
+          "#709BFF",
+          "#9EC6FF",
+          "#DCEEFF"
+        ]
+      },
+      "blue-deep": {
+        "role": "primary",
+        "displayName": "Azul Rótulo Profundo",
+        "canonical": "oklch(41.7% 0.226 267)",
+        "tonalRamp": [
+          "#02042D",
+          "#0B007D",
+          "#1520AE",
+          "#2B4AD2",
+          "#5076EC",
+          "#799FFF",
+          "#A6C8FF",
+          "#DFEEFF"
+        ]
+      },
+      "on-blue": {
+        "role": "neutral",
+        "displayName": "Blanco sobre Azul",
+        "canonical": "oklch(100.0% 0.000 90)",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#242424",
+          "#404040",
+          "#5D5D5D",
+          "#808080",
+          "#A4A4A4",
+          "#CACACA",
+          "#EEEEEE"
+        ]
+      },
+      "on-blue-2": {
+        "role": "neutral",
+        "displayName": "Azul Claro",
+        "canonical": "oklch(90.1% 0.048 278)",
+        "tonalRamp": [
+          "#0A0B10",
+          "#212331",
+          "#3B3E50",
+          "#595C72",
+          "#7A7E98",
+          "#9EA3C0",
+          "#C3C8E9",
+          "#EAEDFF"
+        ]
+      },
+      "yellow": {
+        "role": "secondary",
+        "displayName": "Amarillo Última Hora",
+        "canonical": "oklch(89.2% 0.157 93)",
+        "tonalRamp": [
+          "#110A00",
+          "#332100",
+          "#523D00",
+          "#745B00",
+          "#9A7D00",
+          "#C3A122",
+          "#ECC741",
+          "#FFEEB5"
+        ]
+      },
+      "on-yellow": {
+        "role": "neutral",
+        "displayName": "Tinta sobre Amarillo",
+        "canonical": "oklch(19.2% 0.015 272)",
+        "tonalRamp": [
+          "#0A0B0E",
+          "#21242B",
+          "#3D3F48",
+          "#5B5D66",
+          "#7D8089",
+          "#A1A4AE",
+          "#C7CAD4",
+          "#EDEEF3"
+        ]
+      },
+      "studio": {
+        "role": "neutral",
+        "displayName": "Plató",
+        "canonical": "oklch(19.2% 0.015 272)",
+        "tonalRamp": [
+          "#0A0B0E",
+          "#21242B",
+          "#3D3F48",
+          "#5B5D66",
+          "#7D8089",
+          "#A1A4AE",
+          "#C7CAD4",
+          "#EDEEF3"
+        ]
+      },
+      "studio-2": {
+        "role": "neutral",
+        "displayName": "Plató Elevado",
+        "canonical": "oklch(23.2% 0.020 272)",
+        "tonalRamp": [
+          "#0A0B0F",
+          "#20242E",
+          "#3C3F4B",
+          "#595D69",
+          "#7C808D",
+          "#A0A4B1",
+          "#C6CAD8",
+          "#ECEEF5"
+        ]
+      },
+      "studio-line": {
+        "role": "neutral",
+        "displayName": "Línea de Plató",
+        "canonical": "oklch(30.3% 0.024 272)",
+        "tonalRamp": [
+          "#090B10",
+          "#202330",
+          "#3B3F4C",
+          "#595D6A",
+          "#7C808B",
+          "#A1A4AF",
+          "#C7CAD3",
+          "#EDEEF2"
+        ]
+      },
+      "on-studio": {
+        "role": "neutral",
+        "displayName": "Blanco de Cámara",
+        "canonical": "oklch(96.7% 0.006 265)",
+        "tonalRamp": [
+          "#0A0B0C",
+          "#232427",
+          "#3E4043",
+          "#5C5E61",
+          "#7E8084",
+          "#A3A5A8",
+          "#C9CACE",
+          "#EDEEF0"
+        ]
+      },
+      "on-studio-2": {
+        "role": "neutral",
+        "displayName": "Gris de Plató",
+        "canonical": "oklch(75.3% 0.026 273)",
+        "tonalRamp": [
+          "#0A0B0E",
+          "#21242C",
+          "#3C3F4A",
+          "#5A5D6A",
+          "#7B808F",
+          "#9FA4B5",
+          "#C5CADB",
+          "#ECEEF6"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Papel de Guion",
+        "canonical": "oklch(96.7% 0.006 265)",
+        "tonalRamp": [
+          "#0A0B0C",
+          "#232427",
+          "#3E4043",
+          "#5C5E61",
+          "#7E8084",
+          "#A3A5A8",
+          "#C9CACE",
+          "#EDEEF0"
+        ]
+      },
+      "paper-white": {
+        "role": "neutral",
+        "displayName": "Papel Blanco",
+        "canonical": "oklch(100.0% 0.000 90)",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#242424",
+          "#404040",
+          "#5D5D5D",
+          "#808080",
+          "#A4A4A4",
+          "#CACACA",
+          "#EEEEEE"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "canonical": "oklch(19.2% 0.015 272)",
+        "tonalRamp": [
+          "#0A0B0E",
+          "#21242B",
+          "#3D3F48",
+          "#5B5D66",
+          "#7D8089",
+          "#A1A4AE",
+          "#C7CAD4",
+          "#EDEEF3"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Tinta Suave",
+        "canonical": "oklch(43.3% 0.032 271)",
+        "tonalRamp": [
+          "#090B10",
+          "#1F2331",
+          "#3A3F50",
+          "#575D70",
+          "#7A8091",
+          "#9FA4B3",
+          "#C6CAD7",
+          "#ECEEF4"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Regla",
+        "canonical": "oklch(88.5% 0.014 268)",
+        "tonalRamp": [
+          "#0A0B0E",
+          "#21242B",
+          "#3C4048",
+          "#5A5D66",
+          "#7C8089",
+          "#A1A4AE",
+          "#C6CAD4",
+          "#ECEEF3"
+        ]
+      },
+      "live": {
+        "role": "tertiary",
+        "displayName": "Rojo Señal",
+        "canonical": "oklch(56.8% 0.216 28)",
+        "tonalRamp": [
+          "#1F0000",
+          "#570000",
+          "#830000",
+          "#B2000C",
+          "#E23630",
+          "#FF6F62",
+          "#FFA192",
+          "#FFDFD7"
+        ]
+      },
+      "telegram": {
+        "role": "tertiary",
+        "displayName": "Azul Telegram",
+        "canonical": "oklch(51.4% 0.110 241)",
+        "tonalRamp": [
+          "#010D17",
+          "#002745",
+          "#00446B",
+          "#0E6493",
+          "#4287B6",
+          "#73ACD4",
+          "#A3D1F3",
+          "#DFF1FF"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Titular de portada en el rótulo azul; escala también del cierre de compra."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Rótulos de sección."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Pasos, bloques y pilares."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Cifras de vistas y precio, tabulares."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Párrafos; 16px en móvil."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Etiquetas de monitor, marcador, ticket y cinta."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Reloj, regla de tiempos, prompt y listado de archivos."
+      }
+    },
+    "shadows": [
+      {
+        "name": "caida-rotulo",
+        "value": "0 24px 50px -24px rgba(0,0,0,.8)",
+        "purpose": "Titular de portada sobre los monitores."
+      },
+      {
+        "name": "caida-boton",
+        "value": "0 10px 24px -14px rgba(0,0,0,.7)",
+        "purpose": "Botón rótulo en reposo."
+      },
+      {
+        "name": "caida-boton-hover",
+        "value": "0 16px 30px -16px rgba(0,0,0,.8)",
+        "purpose": "Botón rótulo en hover."
+      },
+      {
+        "name": "caida-ticket",
+        "value": "0 30px 60px -30px rgba(0,0,30,.6)",
+        "purpose": "Ticket sobre la sección azul."
+      },
+      {
+        "name": "caida-pantalla",
+        "value": "0 26px 50px -30px rgba(18,20,27,.6)",
+        "purpose": "Listado de archivos sobre papel."
+      },
+      {
+        "name": "barra-inferior",
+        "value": "0 -10px 30px -12px rgba(0,0,0,.6)",
+        "purpose": "Barra de compra fija del móvil."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "Curva única de entradas y estados."
+      },
+      {
+        "name": "barrido-rotulo",
+        "value": "clip-path inset(0 100% 0 0) -> inset(0) .8s, retardos 0/.18s/.32s",
+        "purpose": "Entrada de rótulos y titulares de sección."
+      },
+      {
+        "name": "subida",
+        "value": "opacity 0 + translateY(18px) -> none, .7s",
+        "purpose": "Entrada de bloques de contenido."
+      },
+      {
+        "name": "barra-marcador",
+        "value": "scaleX(0) -> 1, 1.3s",
+        "purpose": "Crecimiento de barras del marcador."
+      },
+      {
+        "name": "cinta",
+        "value": "translateX(-50%) 46s linear infinite, pausa en hover",
+        "purpose": "Cinta de noticias."
+      },
+      {
+        "name": "latido",
+        "value": "box-shadow 0 -> 7px, 1.6s ease-out infinite",
+        "purpose": "Piloto EN DIRECTO."
+      },
+      {
+        "name": "estado-boton",
+        "value": ".2s; hover translateY(-2px), active scale(.98)",
+        "purpose": "Botón rótulo."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "todo lo anterior solo bajo prefers-reduced-motion: no-preference",
+        "purpose": "Accesibilidad."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "380px"
+      },
+      {
+        "name": "sm",
+        "value": "480px"
+      },
+      {
+        "name": "md",
+        "value": "700px"
+      },
+      {
+        "name": "lg",
+        "value": "900px"
+      },
+      {
+        "name": "xl",
+        "value": "1100px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón rótulo",
+      "kind": "button",
+      "refersTo": "button-strap",
+      "description": "CTA de compra: segmento amarillo con acción y segmento azul con el precio.",
+      "html": "<a class=\"ds-strap-btn\" href=\"#\"><span>Comprar la skill<svg viewBox=\"0 0 16 16\" width=\"18\" height=\"18\" aria-hidden=\"true\"><path d=\"M2 8h11M9 4l4 4-4 4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></span><b>USD 19</b></a>",
+      "css": ":host{--studio:#12141B;--paper:#F2F4F8;--ink:#12141B;--ink-2:#4A5063;--rule:#D5D9E3;--blue:#2A44F5;--yellow:#FFD84D;--live:#D92020;--on-studio:#F2F4F8;--on-studio-2:#A9AEC0;--studio-line:#2A2E3B;--sans:'Bricolage Grotesque',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-strap-btn{display:inline-flex;align-items:stretch;text-decoration:none;font-family:var(--sans);font-weight:800;line-height:1;color:var(--ink);background:var(--yellow);box-shadow:0 10px 24px -14px rgba(0,0,0,.7);transition:transform .2s var(--ease),box-shadow .2s var(--ease)} .ds-strap-btn span{display:flex;align-items:center;padding:.95em 1.2em;font-size:1.08rem;font-stretch:82%} .ds-strap-btn b{display:flex;align-items:center;padding:.95em 1em;background:var(--blue);color:#fff;font-stretch:80%;font-variant-numeric:tabular-nums} .ds-strap-btn svg{margin-left:.55em;transition:transform .2s var(--ease)} .ds-strap-btn:hover{transform:translateY(-2px);box-shadow:0 16px 30px -16px rgba(0,0,0,.8)} .ds-strap-btn:hover svg{transform:translateX(3px)} .ds-strap-btn:active{transform:scale(.98)} .ds-strap-btn:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}"
+    },
+    {
+      "name": "Rótulo de portada",
+      "kind": "custom",
+      "refersTo": "chyron-headline",
+      "description": "Pila de titular azul, subrótulo amarillo y entradilla en papel.",
+      "html": "<div class=\"ds-chyron\"><h1>De una idea a un <em>reel listo</em> para publicar.</h1><p class=\"ds-sub\">Tú das el tema. Claude hace el guion, la voz y la animación.</p><p class=\"ds-lead\">Una skill para Claude que te entrega el reel listo para subir.</p></div>",
+      "css": ":host{--studio:#12141B;--paper:#F2F4F8;--ink:#12141B;--ink-2:#4A5063;--rule:#D5D9E3;--blue:#2A44F5;--yellow:#FFD84D;--live:#D92020;--on-studio:#F2F4F8;--on-studio-2:#A9AEC0;--studio-line:#2A2E3B;--sans:'Bricolage Grotesque',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-chyron{display:grid;justify-items:start;font-family:var(--sans);background:var(--studio);padding:24px} .ds-chyron h1{margin:0;background:var(--blue);color:#fff;font-weight:800;font-stretch:76%;font-size:3rem;line-height:.92;letter-spacing:-.012em;padding:.16em .3em .18em;box-shadow:0 24px 50px -24px rgba(0,0,0,.8)} .ds-chyron em{font-style:normal;color:var(--yellow)} .ds-sub{margin:0;background:var(--yellow);color:var(--ink);font-weight:700;font-size:1.1rem;line-height:1.3;padding:.5em .75em} .ds-lead{margin:0;background:var(--paper);color:var(--ink-2);font-size:1rem;line-height:1.5;padding:.75em .95em;max-width:56ch}"
+    },
+    {
+      "name": "Rótulo de sección",
+      "kind": "custom",
+      "refersTo": "section-strap",
+      "description": "Cuadro amarillo + bloque azul como encabezado de cada sección.",
+      "html": "<h2 class=\"ds-head\"><span class=\"ds-sq\"></span><span class=\"ds-tx\">Así se hace un reel</span></h2>",
+      "css": ":host{--studio:#12141B;--paper:#F2F4F8;--ink:#12141B;--ink-2:#4A5063;--rule:#D5D9E3;--blue:#2A44F5;--yellow:#FFD84D;--live:#D92020;--on-studio:#F2F4F8;--on-studio-2:#A9AEC0;--studio-line:#2A2E3B;--sans:'Bricolage Grotesque',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-head{margin:0;display:inline-flex;align-items:stretch;font-family:var(--sans);font-weight:800;font-stretch:78%;font-size:2.4rem;line-height:.98;letter-spacing:-.01em} .ds-sq{flex:none;width:.42em;background:var(--yellow)} .ds-tx{background:var(--blue);color:#fff;padding:.14em .32em .16em}"
+    },
+    {
+      "name": "Barra del canal",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Barra fija: logo, mosca EN DIRECTO con reloj y botón pequeño.",
+      "html": "<nav class=\"ds-bar\"><a class=\"ds-ident\" href=\"#\">Reels con Claude</a><span class=\"ds-onair\"><i></i>EN DIRECTO <span class=\"ds-clock\">21:04</span></span></nav>",
+      "css": ":host{--studio:#12141B;--paper:#F2F4F8;--ink:#12141B;--ink-2:#4A5063;--rule:#D5D9E3;--blue:#2A44F5;--yellow:#FFD84D;--live:#D92020;--on-studio:#F2F4F8;--on-studio-2:#A9AEC0;--studio-line:#2A2E3B;--sans:'Bricolage Grotesque',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px;padding:0 16px;background:color-mix(in srgb,var(--studio) 92%,transparent);border-bottom:1px solid var(--studio-line);font-family:var(--sans);color:var(--on-studio)} .ds-ident{text-decoration:none;color:inherit;font-weight:800;font-size:1.2rem;letter-spacing:-.01em} .ds-ident:hover{color:var(--yellow)} .ds-ident:focus-visible{outline:3px solid var(--yellow);outline-offset:3px} .ds-onair{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:800;font-stretch:80%;letter-spacing:.06em;color:var(--on-studio-2)} .ds-onair i{width:8px;height:8px;border-radius:50%;background:var(--live)} .ds-clock{font-family:var(--mono);font-weight:500;letter-spacing:0;color:var(--on-studio);font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Monitor",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Pantalla 9:16 con el reel, etiqueta REEL, cifra en bloque azul y play.",
+      "html": "<button class=\"ds-mon\" type=\"button\"><span class=\"ds-tag\">REEL</span><span class=\"ds-vw\"><b>1,4 M</b><small>reproducciones</small></span><span class=\"ds-play\">&#9654;</span></button>",
+      "css": ":host{--studio:#12141B;--paper:#F2F4F8;--ink:#12141B;--ink-2:#4A5063;--rule:#D5D9E3;--blue:#2A44F5;--yellow:#FFD84D;--live:#D92020;--on-studio:#F2F4F8;--on-studio-2:#A9AEC0;--studio-line:#2A2E3B;--sans:'Bricolage Grotesque',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-mon{position:relative;width:180px;aspect-ratio:9/16;border:0;padding:0;background:#000;cursor:pointer;font-family:var(--sans);overflow:hidden} .ds-mon::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,0) 40%)} .ds-tag{position:absolute;z-index:1;top:10px;left:10px;background:var(--live);color:#fff;font-weight:800;font-stretch:78%;letter-spacing:.05em;font-size:.72rem;padding:3px 7px} .ds-vw{position:absolute;z-index:1;left:0;top:40px;display:grid} .ds-vw b{background:var(--blue);color:#fff;font-weight:800;font-stretch:78%;font-size:1.6rem;line-height:1;padding:.22em .4em .2em;font-variant-numeric:tabular-nums} .ds-vw small{justify-self:start;background:var(--paper);color:var(--ink);font-weight:800;font-stretch:78%;letter-spacing:.05em;font-size:.7rem;text-transform:uppercase;padding:3px 7px} .ds-play{position:absolute;z-index:1;right:8px;top:6px;width:38px;height:38px;border-radius:50%;background:rgba(18,20,27,.7);display:grid;place-items:center;color:#fff;font-size:12px;transition:background .2s} .ds-mon:hover .ds-play{background:var(--yellow);color:var(--ink)} .ds-mon:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}"
+    },
+    {
+      "name": "Cinta de noticias",
+      "kind": "custom",
+      "refersTo": "ticker",
+      "description": "Banda papel con cabecera roja y frases separadas por cuadrados azules.",
+      "html": "<div class=\"ds-ticker\"><span class=\"ds-k\">ÚLTIMA HORA</span><span class=\"ds-t\"><span><b>1,4 M</b> reproducciones</span><span>Sin salir en cámara</span></span></div>",
+      "css": ":host{--studio:#12141B;--paper:#F2F4F8;--ink:#12141B;--ink-2:#4A5063;--rule:#D5D9E3;--blue:#2A44F5;--yellow:#FFD84D;--live:#D92020;--on-studio:#F2F4F8;--on-studio-2:#A9AEC0;--studio-line:#2A2E3B;--sans:'Bricolage Grotesque',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-ticker{display:flex;align-items:stretch;background:var(--paper);color:var(--ink);font-family:var(--sans);overflow:hidden} .ds-k{display:flex;align-items:center;background:var(--live);color:#fff;font-weight:800;font-stretch:78%;letter-spacing:.05em;font-size:.78rem;padding:0 14px} .ds-t{display:flex;white-space:nowrap;font-weight:700;font-stretch:85%;font-size:1.02rem;padding-block:11px} .ds-t span{display:inline-flex;align-items:center;gap:18px;padding-inline:18px} .ds-t span::after{content:'';width:8px;height:8px;background:var(--blue)} .ds-t b{color:var(--blue)} .ds-ticker:hover .ds-t b{color:var(--ink)}"
+    },
+    {
+      "name": "Fila del marcador",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Etiqueta, barra azul proporcional y cifra tabular; el total en amarillo.",
+      "html": "<div class=\"ds-board\"><div class=\"ds-row\"><span class=\"ds-who\">REEL 1</span><span class=\"ds-meter\"><i style=\"width:46.7%\"></i></span><b>1,4 M</b></div><div class=\"ds-row ds-total\"><span class=\"ds-who\">TOTAL</span><span class=\"ds-meter\"><i style=\"width:100%\"></i></span><b>+3 M</b></div></div>",
+      "css": ":host{--studio:#12141B;--paper:#F2F4F8;--ink:#12141B;--ink-2:#4A5063;--rule:#D5D9E3;--blue:#2A44F5;--yellow:#FFD84D;--live:#D92020;--on-studio:#F2F4F8;--on-studio-2:#A9AEC0;--studio-line:#2A2E3B;--sans:'Bricolage Grotesque',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-board{background:var(--studio);color:var(--on-studio);font-family:var(--sans);border-top:2px solid var(--on-studio);padding:0 16px} .ds-row{display:grid;grid-template-columns:90px 1fr auto;align-items:center;gap:20px;padding:16px 0;border-bottom:1px solid var(--studio-line)} .ds-total{border-bottom:0} .ds-who{font-weight:800;font-stretch:78%;letter-spacing:.05em;font-size:.8rem;color:var(--on-studio-2)} .ds-meter{height:22px;background:#1A1D27;position:relative} .ds-meter i{position:absolute;inset:0 auto 0 0;background:var(--blue)} .ds-total .ds-meter i{background:var(--yellow)} .ds-row b{font-weight:800;font-stretch:78%;font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums} .ds-total b{color:var(--yellow)}"
+    },
+    {
+      "name": "Ticket de compra",
+      "kind": "card",
+      "refersTo": "ticket",
+      "description": "Único contenedor: cabecera tinta, precio, checks y botón rótulo.",
+      "html": "<div class=\"ds-ticket\"><div class=\"ds-top\"><span>Pago único</span><span>Sin suscripción</span></div><div class=\"ds-body\"><div class=\"ds-price\"><small>USD</small>19.00</div><ul><li><svg viewBox=\"0 0 20 20\" width=\"18\" height=\"18\" aria-hidden=\"true\"><path d=\"M4 10.5l4 4 8-9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\"/></svg>La skill completa</li><li><svg viewBox=\"0 0 20 20\" width=\"18\" height=\"18\" aria-hidden=\"true\"><path d=\"M4 10.5l4 4 8-9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\"/></svg>Asesoría privada 1 a 1</li></ul></div></div>",
+      "css": ":host{--studio:#12141B;--paper:#F2F4F8;--ink:#12141B;--ink-2:#4A5063;--rule:#D5D9E3;--blue:#2A44F5;--yellow:#FFD84D;--live:#D92020;--on-studio:#F2F4F8;--on-studio-2:#A9AEC0;--studio-line:#2A2E3B;--sans:'Bricolage Grotesque',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-ticket{max-width:340px;background:var(--paper);color:var(--ink);font-family:var(--sans);box-shadow:0 30px 60px -30px rgba(0,0,30,.6)} .ds-top{display:flex;justify-content:space-between;gap:12px;background:var(--ink);color:var(--on-studio);padding:12px 20px;font-weight:800;font-stretch:78%;letter-spacing:.05em;font-size:.76rem;text-transform:uppercase} .ds-top span:last-child{color:var(--yellow)} .ds-body{padding:22px;display:grid;gap:16px} .ds-price{font-weight:800;font-stretch:78%;font-size:3.4rem;line-height:.9;font-variant-numeric:tabular-nums} .ds-price small{font-family:var(--mono);font-size:.9rem;color:var(--ink-2);margin-right:6px;vertical-align:.9em} .ds-ticket ul{list-style:none;margin:0;padding:0;display:grid;gap:8px} .ds-ticket li{display:grid;grid-template-columns:22px 1fr;gap:8px;font-weight:600} .ds-ticket li svg{color:var(--blue);margin-top:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "El Telediario de Última Hora",
+    "overview": "**Creative North Star: \"El Telediario de Última Hora\"**\n\nLa web es un plató de informativo: fondo oscuro de estudio, rótulos rectangulares que entran barriendo, monitores 9:16 con los reels en bucle, una mosca \"EN DIRECTO\" con reloj y una cinta de noticias. La noticia es el producto: \"tus reels, hechos por Claude\". Las secciones de lectura se apoyan en papel de guion claro, como la escaleta que se lee fuera de cámara.\n\nDensidad de informativo: titulares grandes y estrechos (Bricolage con anchura 76-82), bloques de color plano apilados sin separación, cifras tabulares. Todo es rectángulo duro; lo único redondo son los pilotos de señal y el botón de play. La forma la dan las reglas horizontales (2px arriba, 1px entre filas), no las tarjetas.\n\nRechazado de forma explícita en la dirección: la landing SaaS de titular + móvil + rejilla de tarjetas, las tarjetas con radio y los degradados decorativos.",
+    "keyCharacteristics": [
+      "Rótulos de TV como sistema: bloque azul con titular, bloque amarillo, bloque papel, apilados.",
+      "Estudio oscuro (tinta) alternando con papel de guion claro y un cierre en azul pleno.",
+      "Esquinas a 0 en todo salvo pilotos de señal.",
+      "Bricolage ExtraBold estrecha para todo lo que se grita; JetBrains Mono para reloj, tiempos y código.",
+      "Movimiento de rótulo: barrido con clip-path de izquierda a derecha al entrar."
+    ],
+    "rules": [
+      {
+        "name": "The Rótulo Rule",
+        "body": "El color va en bloques planos y rectangulares con texto encima, nunca como tinte ni degradado. Los únicos degradados permitidos son funcionales: el velo superior de los monitores para leer la etiqueta y la máscara de los bordes de la cinta.",
+        "section": "colors"
+      },
+      {
+        "name": "The Señal Roja Rule",
+        "body": "El rojo significa \"en directo\" y nada más. Si no es un piloto o una cabecera de señal, no es rojo.",
+        "section": "colors"
+      },
+      {
+        "name": "The Estrecho Grita Rule",
+        "body": "Todo lo que se grita va en 800 con anchura 76-84; lo que se lee, a anchura normal. Nunca un titular a anchura 100.",
+        "section": "typography"
+      },
+      {
+        "name": "The Cifra Tabular Rule",
+        "body": "Toda cifra (vistas, precio, reloj, pasos) usa números tabulares.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sombra Blanda Rule",
+        "body": "Las sombras son difusas y con spread negativo; nunca desplazadas y duras.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do construir cada titular como rótulo: bloque azul plano, texto blanco en 800 estrecho, palabra clave en amarillo.",
+      "Do alternar plató oscuro y papel de guion, y cerrar con la sección azul.",
+      "Do ordenar listas con regla superior de 2px y divisores de 1px en lugar de tarjetas.",
+      "Do mostrar cifras reales en números tabulares, con la cifra en bloque azul sobre los monitores.",
+      "Do animar la entrada de rótulos con barrido clip-path (.8s, cubic-bezier(.16,1,.3,1)) y respetar prefers-reduced-motion."
+    ],
+    "donts": [
+      "Don't redondear esquinas de rótulos, botones, monitores o contenedores; solo pilotos y play son círculos.",
+      "Don't usar rejillas de tarjetas ni la composición SaaS de titular + móvil + tarjetas.",
+      "Don't usar degradados decorativos; solo el velo de legibilidad del monitor y la máscara de la cinta.",
+      "Don't usar el rojo fuera de la señal \"en directo\".",
+      "Don't poner sombras duras desplazadas; las caídas son suaves y difusas."
+    ]
+  }
+}
