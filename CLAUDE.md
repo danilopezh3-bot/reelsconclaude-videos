@@ -39,3 +39,12 @@ Carpeta `remotion/` (Remotion 4, React 18). Instalar con `cd remotion && npm ins
 - ElevenLabs está conectado pero no acepta archivos del chat ni enlaces de Drive para transcribir.
 - No subir audio/vídeo de trabajo al repo de la web (se publica en la web).
 - Commits con `-c user.name="danilopezh3-bot" -c user.email="danilopezh3-bot@users.noreply.github.com"`.
+
+## Reels "así se hace" (voz de ElevenLabs + Remotion)
+- Voz: **Marto | Español (México) Conversacional** (`ojGau167OE7nUATM1xDa`), modelo eleven_v4. Flujo de ElevenLabs "Reel proceso Reels con Claude". Tiempos de palabra con Scribe.
+- `proceso/` + `remotion/src/Proceso.tsx`: reel 1 ("Así hago reels que ya suman más de tres millones…"), fondo oscuro, Bricolage.
+- `proceso2/` + `remotion/src/Proceso2.tsx`: reel 2 ("¿No sabes editar vídeos? Yo tampoco…", cierre "¿Quieres hacer los tuyos? Te enseño paso a paso. Link en mi bio."). Montserrat, fondo claro. Instrucciones del usuario: textos que salen de una máscara, movimientos encadenados, cámara que sigue lo importante, una forma que se transforma de escena en escena, entradas sincronizadas con la voz.
+- Pasos: `python3 proceso2/preparar.py` (voz.wav, sfx.wav, src/proceso2.json) → `npx remotion render src/index.ts Proceso2 out/overlay2.mp4 …` → mezcla con ffmpeg (voz comprimida + sfx al 55 %, loudnorm −14) → `proceso2/salida/reel-proceso-2.mp4`.
+
+## Web
+- Rediseño estilo telediario (nov. 2026). Notas de diseño en `web/` (PRODUCT.md, DESIGN.md, design.json). En el repo de la web esos archivos no se suben (se publicarían).
