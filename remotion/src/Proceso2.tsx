@@ -14,7 +14,7 @@ export const P2_DUR = 22.8;
 export const P2_FRAMES = Math.round(P2_DUR * FPS);
 
 const C = {blue: '#2A44F5', deep: '#0A0C14', panel: '#1A1D27', yellow: '#FFD84D', ink: '#12141B', white: '#FFFFFF', light: '#F2F4F8', red: '#FF5A4F', green: '#3DDC97'};
-const FONT = 'Bricolage';
+const FONT = 'Montserrat';
 type W = {w: string; s: number; e: number};
 const words = data.words as W[];
 const rms = data.rms as number[];
@@ -66,9 +66,9 @@ const Reveal: React.FC<{s: number; e?: number; children: React.ReactNode; style?
     </div>
   );
 };
-const Big: React.FC<{size: number; color?: string; children: React.ReactNode}> = ({size, color = C.white, children}) => (
+const Big: React.FC<{size: number; color?: string; children: React.ReactNode}> = ({size, color = C.ink, children}) => (
   <div style={{fontFamily: FONT, fontSize: size, lineHeight: 0.98, color, letterSpacing: '-0.01em', whiteSpace: 'nowrap',
-    textShadow: '0 8px 30px rgba(0,0,0,.35)'}}>{children}</div>
+    textShadow: '0 6px 24px rgba(42,68,245,.12)'}}>{children}</div>
 );
 const Row: React.FC<{y: number; children: React.ReactNode; x?: number}> = ({y, children, x}) => (
   <div style={{position: 'absolute', top: y, left: x ?? 0, right: x === undefined ? 0 : undefined, display: 'flex', justifyContent: 'center', transform: 'translateY(-50%)'}}>{children}</div>
@@ -96,7 +96,7 @@ const Pop: React.FC<{s: number; children: React.ReactNode; rot?: number}> = ({s,
 };
 const ReelCard: React.FC<{src: string; w: number; startFrom: number; radius?: number}> = ({src, w, startFrom, radius = 34}) => (
   <div style={{width: w, height: w * 16 / 9, borderRadius: radius, overflow: 'hidden', background: '#000',
-    boxShadow: '0 30px 60px -20px rgba(0,0,0,.7)', border: '6px solid #0E1018'}}>
+    boxShadow: '0 30px 60px -20px rgba(18,20,60,.4)', border: '6px solid #12141B'}}>
     <OffthreadVideo src={staticFile(src)} muted startFrom={startFrom} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
   </div>
 );
@@ -106,12 +106,12 @@ const Backdrop: React.FC<{cam: number}> = ({cam}) => {
   const frame = useCurrentFrame();
   const e = rms[frame] ?? 0;
   return (
-    <AbsoluteFill style={{background: C.deep}}>
-      <AbsoluteFill style={{background: `radial-gradient(${950 + e * 240}px ${820 + e * 200}px at 50% 40%, rgba(42,68,245,${0.38 + e * 0.22}), transparent 70%)`}} />
+    <AbsoluteFill style={{background: C.light}}>
+      <AbsoluteFill style={{background: `radial-gradient(${950 + e * 240}px ${820 + e * 200}px at 50% 40%, rgba(42,68,245,${0.10 + e * 0.08}), transparent 70%)`}} />
+      <AbsoluteFill style={{background: `radial-gradient(700px 600px at 85% 90%, rgba(255,216,77,${0.22 + e * 0.1}), transparent 70%)`}} />
       {/* retícula que se desplaza con la cámara: da sensación de recorrido */}
-      <AbsoluteFill style={{backgroundImage: 'radial-gradient(rgba(255,255,255,.08) 2px, transparent 2.6px)', backgroundSize: '48px 48px',
+      <AbsoluteFill style={{backgroundImage: 'radial-gradient(rgba(18,20,27,.09) 2px, transparent 2.6px)', backgroundSize: '48px 48px',
         backgroundPosition: `0 ${-(cam * 0.35) % 48}px`}} />
-      <AbsoluteFill style={{background: 'radial-gradient(1300px 1700px at 50% 45%, transparent 55%, rgba(0,0,0,.55))'}} />
     </AbsoluteFill>
   );
 };
@@ -176,7 +176,7 @@ const Counter: React.FC<{t: number}> = ({t}) => {
   const n = interpolate(t, [T.suman, T.millones + 0.3], [0, 3000000], {...clamp, easing: Easing.out(Easing.cubic)});
   return (
     <div style={{position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 26}}>
-      <span style={{fontFamily: FONT, fontSize: 124, color: C.ink, fontVariantNumeric: 'tabular-nums', letterSpacing: '-0.02em'}}>+{fmt(n)}</span>
+      <span style={{fontFamily: FONT, fontSize: 104, color: C.ink, fontVariantNumeric: 'tabular-nums', letterSpacing: '-0.02em'}}>+{fmt(n)}</span>
     </div>
   );
 };
@@ -187,7 +187,7 @@ const Typing: React.FC<{t: number}> = ({t}) => {
   const sent = t > T.tema + 0.25;
   return (
     <div style={{position: 'absolute', inset: '30px 34px', display: 'flex', alignItems: 'flex-end', gap: 22}}>
-      <div style={{flex: 1, fontFamily: FONT, fontSize: 58, lineHeight: 1.12, color: C.ink}}>
+      <div style={{flex: 1, fontFamily: FONT, fontSize: 50, lineHeight: 1.15, color: C.ink}}>
         {n === 0 ? <span style={{color: '#9AA0B4'}}>Escribe tu tema…</span> : text.slice(0, n)}
         <span style={{opacity: caret && !sent ? 1 : 0, color: C.blue}}>|</span>
       </div>
@@ -211,7 +211,7 @@ const Script: React.FC<{t: number}> = ({t}) => {
             <div style={{width: 72, height: 72, borderRadius: 20, background: C.yellow, display: 'grid', placeItems: 'center', transform: `scale(${back(k)})`, opacity: k > 0 ? 1 : 0.15}}>
               <svg viewBox="0 0 24 24" width="40" height="40"><path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke={C.ink} strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="24" strokeDashoffset={24 * (1 - k)} /></svg>
             </div>
-            <Reveal s={s}><span style={{fontFamily: FONT, fontSize: 60, color: C.ink}}>{l}</span></Reveal>
+            <Reveal s={s}><span style={{fontFamily: FONT, fontSize: 50, color: C.ink}}>{l}</span></Reveal>
           </div>
         );
       })}
@@ -257,8 +257,8 @@ const Screen: React.FC<{t: number}> = ({t}) => {
 };
 const Cta: React.FC<{t: number}> = ({t}) => (
   <div style={{position: 'absolute', inset: 0, display: 'grid', alignContent: 'center', justifyItems: 'center', gap: 4}}>
-    <Reveal s={T.quieres}><Big size={96} color={C.ink}>¿QUIERES HACER</Big></Reveal>
-    <Reveal s={T.quieres + 0.32}><Big size={124} color={C.blue}>LOS TUYOS?</Big></Reveal>
+    <Reveal s={T.quieres}><Big size={78} color={C.ink}>¿QUIERES HACER</Big></Reveal>
+    <Reveal s={T.quieres + 0.32}><Big size={104} color={C.blue}>LOS TUYOS?</Big></Reveal>
   </div>
 );
 
@@ -266,7 +266,7 @@ const Morph: React.FC = () => {
   const frame = useCurrentFrame(); const t = frame / FPS;
   const m = morphAt(t);
   const stages = [<Timeline t={t} />, null, <Counter t={t} />, <Typing t={t} />, <Script t={t} />, <Wave frame={frame} />, <Screen t={t} />, <Cta t={t} />];
-  const shadow = m.i === 1 ? '0 6px 0 rgba(0,0,0,.35)' : '0 40px 80px -30px rgba(0,0,0,.7)';
+  const shadow = m.i === 1 ? '0 6px 0 rgba(0,0,0,.35)' : '0 40px 80px -30px rgba(18,20,60,.35)';
   return (
     <div style={{position: 'absolute', left: m.cx - m.w / 2, top: m.cy - m.h / 2, width: m.w, height: m.h, borderRadius: m.r, background: m.color,
       overflow: 'hidden', boxShadow: shadow, transform: m.i === 1 ? 'rotate(-3deg)' : undefined}}>
@@ -282,9 +282,9 @@ const World: React.FC = () => {
     <>
       {/* 0: gancho */}
       <div style={{position: 'absolute', left: 0, right: 0, top: y(0), height: H}}>
-        <Row y={330}><Reveal s={0}><Big size={110}>¿NO SABES</Big></Reveal></Row>
-        <Row y={500}><Reveal s={T.editar}><Big size={124} color={C.yellow}>EDITAR VÍDEOS?</Big></Reveal></Row>
-        <Row y={700}><Reveal s={T.yo}><Big size={150}>YO TAMPOCO.</Big></Reveal></Row>
+        <Row y={330}><Reveal s={0}><Big size={96}>¿NO SABES</Big></Reveal></Row>
+        <Row y={500}><Reveal s={T.editar}><Big size={100} color={C.blue}>EDITAR VÍDEOS?</Big></Reveal></Row>
+        <Row y={700}><Reveal s={T.yo}><Big size={124}>YO TAMPOCO.</Big></Reveal></Row>
       </div>
       {/* 1: reels + contador */}
       <div style={{position: 'absolute', left: 0, right: 0, top: y(1), height: H}}>
@@ -293,11 +293,11 @@ const World: React.FC = () => {
             <Pop s={T.reels + j * 0.12} rot={c.r * 2}><ReelCard src={c.src} w={c.w} startFrom={c.from} /></Pop>
           </div>
         ))}
-        <Row y={1430}><Reveal s={T.vistas}><Big size={84}>VISTAS</Big></Reveal></Row>
+        <Row y={1430}><Reveal s={T.vistas}><Big size={76}>VISTAS</Big></Reveal></Row>
       </div>
       {/* 2: paso 1 */}
       <div style={{position: 'absolute', left: 0, right: 0, top: y(2), height: H}}>
-        <Row y={360}><Reveal s={T.paso}><Big size={150} color={C.yellow}>PASO 1</Big></Reveal></Row>
+        <Row y={360}><Reveal s={T.paso}><Big size={130} color={C.blue}>PASO 1</Big></Reveal></Row>
         <Row y={620}><Pop s={T.claude1} rot={-10}><ClaudeMark size={100} /></Pop></Row>
       </div>
       {/* 3: Claude escribe el guion */}
@@ -307,7 +307,7 @@ const World: React.FC = () => {
       {/* 4: la voz */}
       <div style={{position: 'absolute', left: 0, right: 0, top: y(4), height: H}}>
         <Row y={500}><Pop s={T.eleven} rot={8}><ElevenMark size={110} /></Pop></Row>
-        <Row y={1180}><Reveal s={T.voz - 0.2}><Big size={110}>PONE LA VOZ</Big></Reveal></Row>
+        <Row y={1180}><Reveal s={T.voz - 0.2}><Big size={92}>PONE LA VOZ</Big></Reveal></Row>
       </div>
       {/* 5: Claude anima */}
       <div style={{position: 'absolute', left: 0, right: 0, top: y(5), height: H}}>
@@ -318,12 +318,12 @@ const World: React.FC = () => {
         <div style={{position: 'absolute', left: 930, top: 620, transform: 'translateX(-50%) rotate(9deg)'}}>
           <Pop s={T.escena} rot={20}><Sequence from={f(T.escena)} layout="none"><ReelCard src="reel3.mp4" w={250} startFrom={480} radius={28} /></Sequence></Pop>
         </div>
-        <Row y={1340}><Reveal s={T.palabra}><Big size={80} color={C.yellow}>PALABRA A PALABRA</Big></Reveal></Row>
+        <Row y={1340}><Reveal s={T.palabra}><Big size={66} color={C.blue}>PALABRA A PALABRA</Big></Reveal></Row>
       </div>
       {/* 6: llamada a la acción */}
       <div style={{position: 'absolute', left: 0, right: 0, top: y(6), height: H}}>
-        <Row y={920}><Reveal s={T.ense}><Big size={100}>TE ENSEÑO</Big></Reveal></Row>
-        <Row y={1030}><Reveal s={T.pasoapaso}><Big size={100} color={C.yellow}>PASO A PASO</Big></Reveal></Row>
+        <Row y={920}><Reveal s={T.ense}><Big size={86}>TE ENSEÑO</Big></Reveal></Row>
+        <Row y={1030}><Reveal s={T.pasoapaso}><Big size={86} color={C.blue}>PASO A PASO</Big></Reveal></Row>
         <Row y={1230}><LinkBio /></Row>
       </div>
     </>
@@ -335,9 +335,9 @@ const LinkBio: React.FC = () => {
   const bob = Math.sin((frame - f(T.link)) / 4) * 12;
   return (
     <div style={{display: 'grid', justifyItems: 'center', gap: 10, transform: `scale(${p})`, opacity: p > 0.02 ? 1 : 0}}>
-      <div style={{background: C.white, color: C.ink, fontFamily: FONT, fontSize: 82, lineHeight: 1, padding: '26px 44px', borderRadius: 28,
-        boxShadow: '0 24px 50px -18px rgba(0,0,0,.6)'}}>LINK EN MI BIO</div>
-      <svg viewBox="0 0 24 24" width="110" height="110" style={{transform: `translateY(${bob}px)`}}><path d="M12 4v15M5 12l7 7 7-7" fill="none" stroke={C.yellow} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      <div style={{background: C.blue, color: C.white, fontFamily: FONT, fontSize: 70, lineHeight: 1, padding: '26px 44px', borderRadius: 28,
+        boxShadow: '0 24px 50px -18px rgba(42,68,245,.6)'}}>LINK EN MI BIO</div>
+      <svg viewBox="0 0 24 24" width="110" height="110" style={{transform: `translateY(${bob}px)`}}><path d="M12 4v15M5 12l7 7 7-7" fill="none" stroke={C.blue} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
     </div>
   );
 };
@@ -373,7 +373,7 @@ export const Proceso2: React.FC = () => {
   const shake = `translate(${Math.sin(frame * 2.7) * 12 * k}px, ${Math.cos(frame * 3.1) * 9 * k}px)`;
   const black = interpolate(frame, [P2_FRAMES - 18, P2_FRAMES - 1], [0, 1], clamp);
   return (
-    <AbsoluteFill style={{background: C.deep, fontWeight: 800}}>
+    <AbsoluteFill style={{background: C.light, fontWeight: 800}}>
       <Backdrop cam={pan} />
       <AbsoluteFill style={{transform: `${shake} ${cam}`, transformOrigin: '540px 960px'}}>
         <AbsoluteFill style={{transform: `translateY(${-pan}px)`}}><World /></AbsoluteFill>
@@ -411,10 +411,10 @@ const Captions: React.FC = () => {
   const fs = Math.min(76, Math.floor(940 / (chars * 0.78)));
   return (
     <div style={{position: 'absolute', left: 0, right: 0, top: 1640, display: 'flex', justifyContent: 'center', transform: 'translateY(-50%)'}}>
-      <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', columnGap: 36, maxWidth: 980, transform: `translateY(${(1 - p) * 24}px)`, opacity: p}}>
+      <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', columnGap: 8, maxWidth: 1000, transform: `translateY(${(1 - p) * 24}px)`, opacity: p}}>
         {g.ws.map((w, k) => {
           const on = t >= w.s && (k + 1 < g.ws.length ? t < g.ws[k + 1].s : true);
-          return <span key={k} style={{fontFamily: 'Montserrat', fontSize: fs, color: on ? C.yellow : C.white, ...stroke(8), display: 'inline-block', transform: `scale(${on ? 1.08 : 1})`}}>{clean(w.w)}</span>;
+          return <span key={k} style={{fontFamily: 'Montserrat', fontSize: fs, color: on ? C.white : C.ink, background: on ? C.blue : 'transparent', borderRadius: 16, padding: '2px 14px', display: 'inline-block', transform: `scale(${on ? 1.06 : 1})`}}>{clean(w.w)}</span>;
         })}
       </div>
     </div>
